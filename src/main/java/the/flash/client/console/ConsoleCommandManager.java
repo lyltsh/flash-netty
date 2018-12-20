@@ -6,15 +6,17 @@ import the.flash.util.SessionUtil;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ConsoleCommandManager implements ConsoleCommand {
     private Map<String, ConsoleCommand> consoleCommandMap;
 
     public ConsoleCommandManager() {
-        consoleCommandMap = new HashMap<>();
+        consoleCommandMap = new ConcurrentHashMap<>();
         consoleCommandMap.put("sendToUser", new SendToUserConsoleCommand());
         consoleCommandMap.put("logout", new LogoutConsoleCommand());
         consoleCommandMap.put("createGroup", new CreateGroupConsoleCommand());
+        consoleCommandMap.put("sendGroupMessage", new SendGroupConsoleCommand());
     }
 
     @Override

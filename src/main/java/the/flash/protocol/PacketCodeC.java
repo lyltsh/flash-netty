@@ -1,14 +1,8 @@
 package the.flash.protocol;
 
 import io.netty.buffer.ByteBuf;
-import the.flash.protocol.request.CreateGroupRequestPacket;
-import the.flash.protocol.request.LoginRequestPacket;
-import the.flash.protocol.request.LogoutRequestPacket;
-import the.flash.protocol.request.MessageRequestPacket;
-import the.flash.protocol.response.CreateGroupResponsePacket;
-import the.flash.protocol.response.LoginResponsePacket;
-import the.flash.protocol.response.LogoutResponsePacket;
-import the.flash.protocol.response.MessageResponsePacket;
+import the.flash.protocol.request.*;
+import the.flash.protocol.response.*;
 import the.flash.serialize.Serializer;
 import the.flash.serialize.impl.JSONSerializer;
 
@@ -36,6 +30,8 @@ public class PacketCodeC {
         packetTypeMap.put(LOGOUT_RESPONSE, LogoutResponsePacket.class);
         packetTypeMap.put(CREATE_GROUP_REQUEST, CreateGroupRequestPacket.class);
         packetTypeMap.put(CREATE_GROUP_RESPONSE, CreateGroupResponsePacket.class);
+        packetTypeMap.put(GROUP_MESSAGE_REQUEST, GroupMessageRequestPacket.class);
+        packetTypeMap.put(GROUP_MESSAGE_RESPONSE, GroupMessageResponsePacket.class);
 
         serializerMap = new HashMap<>();
         Serializer serializer = new JSONSerializer();

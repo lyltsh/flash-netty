@@ -10,10 +10,7 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import the.flash.client.console.ConsoleCommandManager;
 import the.flash.client.console.LoginConsoleCommand;
-import the.flash.client.handler.CreateGroupResponseHandler;
-import the.flash.client.handler.LoginResponseHandler;
-import the.flash.client.handler.LogoutResponseHandler;
-import the.flash.client.handler.MessageResponseHandler;
+import the.flash.client.handler.*;
 import the.flash.codec.PacketDecoder;
 import the.flash.codec.PacketEncoder;
 import the.flash.codec.Spliter;
@@ -51,6 +48,7 @@ public class NettyClient {
                         ch.pipeline().addLast(new LogoutResponseHandler());
                         ch.pipeline().addLast(new MessageResponseHandler());
                         ch.pipeline().addLast(new CreateGroupResponseHandler());
+                        ch.pipeline().addLast(new GroupMessageResponseHandler());
                         ch.pipeline().addLast(new PacketEncoder());
                     }
                 });

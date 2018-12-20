@@ -30,11 +30,13 @@ public class CreateGroupRequestHandler extends SimpleChannelInboundHandler<Creat
                 userNameList.add(SessionUtil.getSession(channel).getUserName());
             }
         }
+        String groupId = IDUtil.randomId();
+        SessionUtil.bindGroupSession(groupId, channelGroup);
 
         // 3. 创建群聊创建结果的响应
         CreateGroupResponsePacket createGroupResponsePacket = new CreateGroupResponsePacket();
         createGroupResponsePacket.setSuccess(true);
-        createGroupResponsePacket.setGroupId(IDUtil.randomId());
+        createGroupResponsePacket.setGroupId(groupId);
         createGroupResponsePacket.setUserNameList(userNameList);
 
         // 4. 给每个客户端发送拉群通知

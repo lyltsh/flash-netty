@@ -27,6 +27,14 @@ public class SessionUtil {
         }
     }
 
+    public static void bindGroupSession(String groupId, ChannelGroup channelGroup) {
+        groupIdChannelGroupMap.put(groupId, channelGroup);
+    }
+
+    public static ChannelGroup getChannelGroup(String groupId) {
+        return groupIdChannelGroupMap.get(groupId);
+    }
+
     public static boolean hasLogin(Channel channel) {
 
         return getSession(channel) != null;
